@@ -18,14 +18,10 @@ class TestLogin(unittest.TestCase):
         time.sleep(1)
         browser.find_element(By.NAME,"password").send_keys("secret_sauce") # isi password
         time.sleep(1)
-        browser.find_element(By.CSS_SELECTOR,('button[type=submit]')).submit() # klik tombol masuk
+        browser.find_element(By.CSS_SELECTOR,('button[type=submit]')).submit() # klik Login
 
         # validasi
-        # response_data = browser.find_element(By.__class__,"swal2-title").text
-        # response_message = browser.find_element(By.ID,"swal2-content").text
-
-        # self.assertIn('Welcome', response_data)
-        # self.assertEqual(response_message, 'Anda Berhasil Masuk')
+        # self.assertEqual(response_message, 'Menampilkan halaman produk')
 
     def test_b_failed_login_with_empty_password(self): 
         # steps
@@ -36,12 +32,9 @@ class TestLogin(unittest.TestCase):
         time.sleep(1)
         browser.find_element(By.NAME,"password").send_keys("") # isi password
         time.sleep(1)
-        browser.find_element(By.CSS_SELECTOR,('button[type=submit]')).submit() # klik tombol masuk
+        browser.find_element(By.CSS_SELECTOR,('button[type=submit]')).submit() # klik Login
 
         # validasi
-        # response_data = browser.find_element(By.CSS_SELECTOR,'div[data-testid="error-password"]').text
-        response_message = browser.find_element(By.CSS_SELECTOR,'div[data-testid="error-password"]').text
-
         # self.assertIn('not found', response_data)
         self.assertEqual(response_message, 'Epic sadface: Password is required')
 
@@ -57,45 +50,36 @@ class TestLogin(unittest.TestCase):
         browser.find_element(By.CSS_SELECTOR,('button[type=submit]')).submit() # klik tombol masuk
 
         # validasi
-        # response_data = browser.find_element(By.CSS_SELECTOR,'div[data-testid="error-password"]').text
-        response_message = browser.find_element(By.CSS_SELECTOR,'div[data-testid="error-email"]').text
-
         # self.assertIn('not found', response_data)
         self.assertEqual(response_message, 'Epic sadface: Username is required')
         
-     def test_d_failed_login_with_empty_email(self): 
+    def test_d_failed_login_with_empty_email(self): 
         # steps
         browser = self.browser #buka web browser
         browser.get("https://www.saucedemo.com/") # buka situs
         time.sleep(3)
         browser.find_element(By.NAME,"username").send_keys("") # isi username
         time.sleep(1)
-        browser.find_element(By.NAME,"password").send_keys("xaverius") # isi password
+        browser.find_element(By.NAME,"password").send_keys("secret_sauce") # isi password
         time.sleep(1)
-        browser.find_element(By.CSS_SELECTOR,('button[type=submit]')).submit() # klik tombol masuk
+        browser.find_element(By.CSS_SELECTOR,('button[type=submit]')).submit() # klik Login
 
         # validasi
-        # response_data = browser.find_element(By.CSS_SELECTOR,'div[data-testid="error-password"]').text
-        response_message = browser.find_element(By.CSS_SELECTOR,'div[data-testid="error-email"]').text
-
         # self.assertIn('not found', response_data)
         self.assertEqual(response_message, 'Epic sadface: Username is required')
         
-     def test_e_failed_login_with_email_and_password_invalid(self): 
+    def test_e_failed_login_with_email_and_password_invalid(self): 
         # steps
         browser = self.browser #buka web browser
         browser.get("https://www.saucedemo.com/") # buka situs
         time.sleep(3)
-        browser.find_element(By.NAME,"email").send_keys("hestiskmwti@gmail.com") # isi email
+        browser.find_element(By.NAME,"email").send_keys("standard_user") # isi username
         time.sleep(1)
         browser.find_element(By.NAME,"password").send_keys("xaver") # isi password
         time.sleep(1)
-        browser.find_element(By.CSS_SELECTOR,('button[type=submit]')).submit() # klik tombol masuk
+        browser.find_element(By.CSS_SELECTOR,('button[type=submit]')).submit() # klik Login
 
         # validasi
-        # response_data = browser.find_element(By.CSS_SELECTOR,'div[data-testid="error-password"]').text
-        response_message = browser.find_element(By.CSS_SELECTOR,'div[data-testid="error-email"]').text
-
         # self.assertIn('not found', response_data)
         self.assertEqual(response_message, 'Epic sadface: Username and password do not match any user in this service')
 
